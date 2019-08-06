@@ -8,11 +8,10 @@ int verificaPrimo(int num){
         }
     }
     if(div == 2){
-        printf("Numero %d primo!\n", num);
+        return 1;
     }
     else {
-        printf("%d", div);
-        printf("Numero %d NÃO primo!\n", num);
+        return 0;
     }
 }
 
@@ -21,6 +20,10 @@ int main(int argc, char const *argv[])
     int num;
     printf("Digite um numero inteiro: ");
     scanf("%d", &num);
-    verificaPrimo(num);
+    int primo = verificaPrimo(num);
+    if(primo == 1){
+        printf("Numero %d primo!\n", num);
+    }
+    else printf("Numero %d NÃO primo!\n", num);
     return 0;
 }
