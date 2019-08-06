@@ -1,14 +1,12 @@
 #include <stdio.h>
-#define true "Verdadeiro"
-#define false "Falso"
 
 char* verificaValor(int valor){
     if(valor % 2 == 0){
-        return true;
+        return 1;
     }
     else
     {
-        return false;
+        return 0;
     }
     
 }
@@ -18,6 +16,8 @@ int main(int argc, char const *argv[])
     int valor;
     printf("Digite um valor: ");
     scanf("%d", &valor);
-    printf("Resultado: %s\n", verificaValor(valor));
+    if(verificaValor(valor) == 1)
+        printf("Valor par\n");
+    else printf("Valor ímpar\n");
     return 0;
 }

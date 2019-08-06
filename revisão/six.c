@@ -1,16 +1,15 @@
 #include <stdio.h>
 
-void converteIdade(int idade){
-    int meses = idade * 12;
-    int dias = idade * 365;
-    printf("Idade em meses: %d\n", meses);
-    printf("Idade em dias: %d\n", dias);
+int converteIdade(int anos, int meses, int dias){
+    return (meses * 30.417) + (anos * 365) + dias;
+
 }
 int main(int argc, char const *argv[])
 {
-    int idade;
-    printf("Digite a idade: ");
-    scanf("%d", &idade);
-    converteIdade(idade);
+    int idade, anos, meses, dias;
+    printf("Digite a idade em anos, meses e dias: ");
+    scanf("%d %d %d", &anos, &meses, &dias);
+    idade = converteIdade(anos, meses, dias);
+    printf("Idade em dias: %d\n", idade);
     return 0;
 }

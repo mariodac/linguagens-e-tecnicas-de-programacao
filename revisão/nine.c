@@ -1,12 +1,10 @@
 #include <stdio.h>
-#define true "Verdadeiro"
-#define false "Falso"
 
-char* verificaValor(int valor){
+int verificaValor(int valor){
     if(valor < 0)
-        return false;
+        return 0;
     if(valor > 0)
-        return true;
+        return 1;
 }
 
 int main(int argc, char const *argv[])
@@ -14,6 +12,12 @@ int main(int argc, char const *argv[])
     float valor;
     printf("Digite um valor: ");
     scanf("%f", &valor);
-    printf("Resultado: %s\n", verificaValor(valor));
+    if(verificaValor(valor) == 1){
+        printf("Valor positivo\n");
+    }else
+    {
+        printf("Valor negativo\n");
+    }
+    
     return 0;
 }

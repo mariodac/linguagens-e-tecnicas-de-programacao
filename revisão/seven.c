@@ -19,6 +19,9 @@ int main(int argc, char const *argv[])
     int valor;
     printf("Digite um valor: ");
     scanf("%d", &valor);
-    printf("%d\n", valorPerfeito(valor));
+    if(valorPerfeito(valor) == 1)
+        printf("Numero É perfeito!\n");
+    else
+        printf("Numero NÃO É perfeito!\n");
     return 0;
 }
