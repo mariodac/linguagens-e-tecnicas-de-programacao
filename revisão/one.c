@@ -1,10 +1,8 @@
 #include <stdio.h>
-#define PI 3.14159265359
+#include <math.h>
 
 float raioEsfera(float r){
-    float v;
-    v = 4 / 3 * PI * (r*r*r);
-    return v;
+    return (((4.f / 3.f) * M_PI) * powf(r, 3.f));
 }
 int main(){
   float r;

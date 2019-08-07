@@ -1,8 +1,12 @@
 #include <stdio.h>
 
 void converteTempo(int *segundos, int *minutos, int *horas){
+    int x, y;
     *horas = *segundos / 3600;
-    *minutos = *segundos / 60;
+    x = *segundos % 3600;
+    *minutos = x / 60;
+    y = x % 60;
+    *segundos = y;
 }
 int main(int argc, char const *argv[])
 {
@@ -10,8 +14,6 @@ int main(int argc, char const *argv[])
     printf("Digite o valor do segundo: ");
     scanf("%d", &segundos);
     converteTempo(&segundos, &minutos, &horas);
-    printf("Tempo em Horas: %d\n", horas);
-    printf("Tempo em minutos: %d\n", minutos);
-    printf("Tempo em segundos: %d\n", segundos);
+    printf("Tempo em HH:MM:SS: %d:%d:%d\n", horas, minutos, segundos);
     return 0;
 }

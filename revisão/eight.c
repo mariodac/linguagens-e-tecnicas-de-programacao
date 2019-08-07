@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void verificaNadador(int idade, char *categoria[]){
+void verificaNadador(int idade, char **categoria){
     if(idade >= 5 && idade <= 7){
         *categoria = "Infantil A";
     }
@@ -24,10 +24,10 @@ void verificaNadador(int idade, char *categoria[]){
 int main(int argc, char const *argv[])
 {
     int idade;
-    char categoria[256];
+    char *categoria;
     printf("Digite a idade: ");
     scanf("%d", &idade);
-    verificaNadador(idade, (categoria));
+    verificaNadador(idade, &categoria);
     printf("Categoria: %s\n", categoria);
     
     return 0;
