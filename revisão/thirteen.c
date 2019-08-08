@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int* ordemCrescente(int n1, int n2, int n3, int *numeros){
+void ordemCrescente(int n1, int n2, int n3, int *numeros){
     numeros[0] = n1;
     numeros[1] = n2;
     numeros[2] = n3;
@@ -20,8 +20,7 @@ int* ordemCrescente(int n1, int n2, int n3, int *numeros){
             
         }
         
-    } while (trocado == 1);
-    return numeros;
+    } while (trocado == 1)
 }
 
 int main(int argc, char const *argv[])
