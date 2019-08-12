@@ -20,7 +20,7 @@ void ordemCrescente(int n1, int n2, int n3, int *numeros){
             
         }
         
-    } while (trocado == 1)
+    } while (trocado == 1);
 }
 
 int main(int argc, char const *argv[])
