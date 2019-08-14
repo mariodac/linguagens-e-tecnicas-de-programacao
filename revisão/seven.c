@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+enum{false, true};
+
 int valorPerfeito(int valor){
     int div = 0;
     for(int i = 1; i < valor; i++){
@@ -8,9 +10,9 @@ int valorPerfeito(int valor){
         }
     }
     if(div == valor){
-        return 1;
+        return true;
     }
-    else return 0;
+    else return false;
 
 }
 
