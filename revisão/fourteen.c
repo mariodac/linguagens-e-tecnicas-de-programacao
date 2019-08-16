@@ -1,11 +1,6 @@
 #include <stdio.h>
+void horario(int*, int*, int*, int*);
 
-void horario(int *horaInicial, int *minutoInicial, int *horaFinal, int *minutoFinal){
-    int horaAcumulada = (*horaInicial) + (*minutoInicial/60) + (*horaFinal) + (*minutoFinal/60);
-    if(horaAcumulada > 24){
-        printf("O jogo não pode ultrapassar 24 horas\n");
-    }
-}
 int main(int argc, char const *argv[])
 {
     int hora1, minuto1, hora2, minuto2;
@@ -15,4 +10,11 @@ int main(int argc, char const *argv[])
     scanf("%d %d", &hora2, &minuto2);
     horario(&hora1, &minuto1, &hora2, &minuto2);
     return 0;
+}
+
+void horario(int *horaInicial, int *minutoInicial, int *horaFinal, int *minutoFinal){
+    int horaAcumulada = (*horaInicial) + (*minutoInicial/60) + (*horaFinal) + (*minutoFinal/60);
+    if(horaAcumulada > 24){
+        printf("O jogo não pode ultrapassar 24 horas\n");
+    }
 }

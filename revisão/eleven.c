@@ -1,15 +1,6 @@
 #include <stdio.h>
 
-void notaConceito(float media, char *conceito){
-    if(media > 0 && media < 5)
-        *conceito = 'D';
-    if(media >= 5 && media <= 6.9)
-        *conceito = 'C';
-    if(media >= 7 && media <= 8.9)
-        *conceito = 'B';
-    if(media >= 9 && media <= 10)
-        *conceito = 'A';
-}
+void notaConceito(float, char*);
 
 int main(int argc, char const *argv[])
 {
@@ -20,4 +11,14 @@ int main(int argc, char const *argv[])
     notaConceito(media, &conceito);
     printf("Conceito: %c\n", conceito);
     return 0;
+}
+void notaConceito(float media, char *conceito){
+    if(media > 0 && media < 5)
+        *conceito = 'D';
+    if(media >= 5 && media <= 6.9)
+        *conceito = 'C';
+    if(media >= 7 && media <= 8.9)
+        *conceito = 'B';
+    if(media >= 9 && media <= 10)
+        *conceito = 'A';
 }

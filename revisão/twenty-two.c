@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int somatorio(int* numero);
+int somatorio(int*);
 
 int main(int argc, char const *argv[])
 {

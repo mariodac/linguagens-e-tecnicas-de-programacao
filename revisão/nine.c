@@ -1,18 +1,15 @@
 #include <stdio.h>
 
-int verificaValor(int valor){
-    if(valor < 0)
-        return 0;
-    if(valor > 0)
-        return 1;
-}
+enum{false, true};
+
+int verificaValor(int);
 
 int main(int argc, char const *argv[])
 {
     float valor;
     printf("Digite um valor: ");
     scanf("%f", &valor);
-    if(verificaValor(valor) == 1){
+    if(verificaValor(valor)){
         printf("Valor positivo\n");
     }else
     {
@@ -20,4 +17,11 @@ int main(int argc, char const *argv[])
     }
     
     return 0;
+}
+
+int verificaValor(int valor){
+    if(valor < 0)
+        return 0;
+    if(valor > 0)
+        return 1;
 }

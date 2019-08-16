@@ -1,13 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float media(int* numeros, int tamanho){
-    float media = 0;
-    for(int i = 0; i < tamanho; i++){
-        media += (float)numeros[i]/(float)tamanho;
-    }
-    return media;
-}
+float media(int*, int);
 
 int main(int argc, char const *argv[])
 {
@@ -22,4 +16,12 @@ int main(int argc, char const *argv[])
     printf("\n");
     printf("Média: %.2f\n", media(numeros, tamanho));
     return 0;
+}
+
+float media(int* numeros, int tamanho){
+    float media = 0;
+    for(int i = 0; i < tamanho; i++){
+        media += (float)numeros[i]/(float)tamanho;
+    }
+    return media;
 }

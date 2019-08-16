@@ -1,12 +1,8 @@
 #include <stdio.h>
 
-void mediaA(float nota1, float nota2, float nota3, float* media){
-    *media = (nota1 + nota2 + nota3) / 3;
-}
+void mediaA(float, float, float, float*);
+void mediaP(float, float, float, float*);
 
-void mediaP(float nota1, float nota2, float nota3, float* media){
-    *media = (nota1 + nota2 + nota3) / (5 + 3 + 2);
-}
 int main(int argc, char const *argv[])
 {
     char escolha;
@@ -44,4 +40,12 @@ int main(int argc, char const *argv[])
     }
     
     return 0;
+}
+
+void mediaA(float nota1, float nota2, float nota3, float* media){
+    *media = (nota1 + nota2 + nota3) / 3;
+}
+
+void mediaP(float nota1, float nota2, float nota3, float* media){
+    *media = (nota1 + nota2 + nota3) / (5 + 3 + 2);
 }

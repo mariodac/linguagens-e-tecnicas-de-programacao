@@ -1,12 +1,6 @@
 #include <stdio.h>
 
-int fatorial(int numero){
-    if(numero <= 1)
-        return numero;
-    else{
-        return numero * fatorial(numero - 1);
-    }
-}
+int fatorial(int);
 
 int main(int argc, char const *argv[])
 {
@@ -15,4 +9,12 @@ int main(int argc, char const *argv[])
     scanf("%d", &numero);
     printf("%d\n", fatorial(numero));
     return 0;
+}
+
+int fatorial(int numero){
+    if(numero <= 1)
+        return numero;
+    else{
+        return numero * fatorial(numero - 1);
+    }
 }

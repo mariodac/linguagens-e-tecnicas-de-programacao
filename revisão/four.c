@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-void bhaskara(float a, float b, float c, float *x1, float *x2, float *delta){
-    *delta = pow(b, 2) - 4 * a * c;
-    *x1 = (-b + sqrt(*delta))/ (2*a);
-    *x2 = (-b - sqrt(*delta))/ (2*a);
-}
+
+void bhaskara(float, float, float, float*, float*, float*);
 
 int main(int argc, char const *argv[])
 {
@@ -26,4 +23,10 @@ int main(int argc, char const *argv[])
         printf("Valor de x2: %f\n", x2);
     }
     return 0;
+}
+
+void bhaskara(float a, float b, float c, float *x1, float *x2, float *delta){
+    *delta = pow(b, 2) - 4 * a * c;
+    *x1 = (-b + sqrt(*delta))/ (2*a);
+    *x2 = (-b - sqrt(*delta))/ (2*a);
 }

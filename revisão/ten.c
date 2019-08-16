@@ -1,23 +1,20 @@
 #include <stdio.h>
 
-char* verificaValor(int valor){
-    if(valor % 2 == 0){
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-    
-}
+enum{false, true};
+int verificaValor(int);
 
 int main(int argc, char const *argv[])
 {
     int valor;
     printf("Digite um valor: ");
     scanf("%d", &valor);
-    if(verificaValor(valor) == 1)
+    if(verificaValor(valor))
         printf("Valor par\n");
     else printf("Valor ímpar\n");
     return 0;
+}
+
+int verificaValor(int valor){
+    if(valor % 2 == 0) return true;
+    else return false;
 }

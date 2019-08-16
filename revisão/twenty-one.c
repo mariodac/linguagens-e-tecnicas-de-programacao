@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int divisores(int* numero);
+int divisores(int*);
 
 int main(int argc, char const *argv[])
 {

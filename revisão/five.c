@@ -1,13 +1,7 @@
 #include <stdio.h>
 
-void converteTempo(int *segundos, int *minutos, int *horas){
-    int x, y;
-    *horas = *segundos / 3600;
-    x = *segundos % 3600;
-    *minutos = x / 60;
-    y = x % 60;
-    *segundos = y;
-}
+void converteTempo(int*, int*, int*);
+/*  */
 int main(int argc, char const *argv[])
 {
     int segundos, horas, minutos;
@@ -16,4 +10,13 @@ int main(int argc, char const *argv[])
     converteTempo(&segundos, &minutos, &horas);
     printf("Tempo em HH:MM:SS: %d:%d:%d\n", horas, minutos, segundos);
     return 0;
+}
+
+void converteTempo(int *segundos, int *minutos, int *horas){
+    int x, y;
+    *horas = *segundos / 3600;
+    x = *segundos % 3600;
+    *minutos = x / 60;
+    y = x % 60;
+    *segundos = y;
 }

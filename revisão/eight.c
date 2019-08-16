@@ -1,5 +1,19 @@
 #include <stdio.h>
 
+void verificaNadador(int, char**);
+
+int main(int argc, char const *argv[])
+{
+    int idade;
+    char *categoria;
+    printf("Digite a idade: ");
+    scanf("%d", &idade);
+    verificaNadador(idade, &categoria);
+    printf("Categoria: %s\n", categoria);
+    
+    return 0;
+}
+
 void verificaNadador(int idade, char **categoria){
     if(idade >= 5 && idade <= 7){
         *categoria = "Infantil A";
@@ -19,16 +33,4 @@ void verificaNadador(int idade, char **categoria){
     if (idade < 5){
         *categoria = "Nenhuma";
     }
-}
-
-int main(int argc, char const *argv[])
-{
-    int idade;
-    char *categoria;
-    printf("Digite a idade: ");
-    scanf("%d", &idade);
-    verificaNadador(idade, &categoria);
-    printf("Categoria: %s\n", categoria);
-    
-    return 0;
 }

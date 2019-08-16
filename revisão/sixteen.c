@@ -5,23 +5,8 @@ struct Pessoa{
     float salario;
 };
 
-void mediaHabitantes(struct Pessoa *habitantes, float *mediaS, float *mediaF, float *maiorSalario, float *percentual, int tamanho){
-    int quantidade = 0;
-    for(int i=0; i<tamanho; i++){
-        *mediaF += habitantes[i].quantidadeDeFilhos;
-        *mediaS += habitantes[i].salario;
-        *maiorSalario = habitantes[i].salario;
-        if(*maiorSalario >= habitantes[i].salario){
-            *maiorSalario = habitantes[i].salario;
-        }
-        if(habitantes[i].salario <= 350){
-            quantidade++;
-        }
-    }
-    // *mediaF = *mediaF/tamanho;
-    // *mediaS = *mediaS/tamanho;
-    *percentual = (float)quantidade*100.f/(float)tamanho;
-}
+void mediaHabitantes(struct Pessoa*, float*, float*, float*, float*, int);
+
 int main(int argc, char const *argv[])
 {
     int tamanho;
@@ -39,6 +24,23 @@ int main(int argc, char const *argv[])
     printf("Media filhos: %.2f\n", mediaFilhos);
     printf("Media salário: %.2f\n", mediaSalario);
     printf("Maior salário: %.2f\n", maiorSalario);
-    printf("Percentual de salário até 350: %.2f\n", percentual);
+    printf("Percentual de salário até 350: %.2f%\n", percentual);
     return 0;
+}
+
+void mediaHabitantes(struct Pessoa *habitantes, float *mediaS, float *mediaF, float *maiorSalario, float *percentual, int tamanho){
+    int quantidade = 0;
+    for(int i=0; i<tamanho; i++){
+        *mediaF += (float)habitantes[i].quantidadeDeFilhos/(float)tamanho;
+        *mediaS += habitantes[i].salario/(float)tamanho;
+        if(habitantes[i].salario > *maiorSalario){
+            *maiorSalario = habitantes[i].salario;
+        }
+        if(habitantes[i].salario <= 350){
+            quantidade++;
+        }
+    }
+    // *mediaF = *mediaF/tamanho;
+    // *mediaS = *mediaS/tamanho;
+    *percentual = (((float)quantidade*100.f)/(float)tamanho);
 }

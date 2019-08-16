@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void salario(int ht, float vh, float pd, float *sb, float *td, float * sl);
+void salario(int, float, float, float*, float*, float*);
 
 int main(int argc, char const *argv[])
 {

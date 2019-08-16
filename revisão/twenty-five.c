@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int maiorNumero(int *numeros);
+int maiorNumero(int*);
 
 int main(int argc, char const *argv[])
 {

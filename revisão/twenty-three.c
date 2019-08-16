@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-float areaCircunferencia(float raio);
+float areaCircunferencia(float);
 
 int main(int argc, char const *argv[])
 {

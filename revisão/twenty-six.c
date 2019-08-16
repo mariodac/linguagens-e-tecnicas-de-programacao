@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-int menorNumero(int *numeros);
+int menorNumero(int*);
 
 int main(int argc, char const *argv[])
 {

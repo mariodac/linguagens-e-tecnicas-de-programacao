@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-float raioEsfera(float r){
-    return (((4.f / 3.f) * M_PI) * powf(r, 3.f));
-}
+float raioEsfera(float);
+
 int main(){
   float r;
   
@@ -11,4 +10,8 @@ int main(){
   scanf("%f",&r);
   printf("O raio da esfera = %f\n", raioEsfera(r));
   return 0;
+}
+
+float raioEsfera(float r){
+    return (((4.f / 3.f) * M_PI) * powf(r, 3.f));
 }

@@ -1,16 +1,6 @@
 #include <stdio.h>
 
-float pesoIdeal(float altura, char sexo){
-    if(sexo == 'm' || sexo == 'M'){
-        return 72.7 * altura - 58;
-    }
-    if(sexo == 'f' || sexo == 'F'){
-        return 62.1 * altura - 44.7;
-    }
-    else{
-        printf("Erro\n");
-    }
-}
+float pesoIdeal(float, char);
 
 int main(int argc, char const *argv[])
 {
@@ -22,4 +12,16 @@ int main(int argc, char const *argv[])
     scanf("%f", &a);
     printf("Peso ideal: %.2f Kg\n", pesoIdeal(a, s));
     return 0;
+}
+
+float pesoIdeal(float altura, char sexo){
+    if(sexo == 'm' || sexo == 'M'){
+        return 72.7 * altura - 58;
+    }
+    if(sexo == 'f' || sexo == 'F'){
+        return 62.1 * altura - 44.7;
+    }
+    else{
+        printf("Erro\n");
+    }
 }
