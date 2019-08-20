@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <math.h>
 
-void bubbleSort(int*, int);
+void maiorMenor(int*, int, int*, int*);
 
 int main(int argc, char const *argv[])
 {
-    int *numeros, i = 0, numero, tamanho = 50;
+    int *numeros, i = 0, numero, tamanho = 5, maior = 0;
+    int menor = (int)INFINITY;
     while (i < tamanho)
     {
         printf("Digite um numero inteiro: ");
@@ -12,32 +14,20 @@ int main(int argc, char const *argv[])
         numeros[i] = numero;
         i++;
     }
-    bubbleSort(numeros, tamanho);
-    for (int i = 0; i < tamanho; i++)
-    {
-        printf("%d\n", numeros[i]);
-    }
-
+    maiorMenor(numeros, tamanho, &maior, &menor);
+    printf("Maior: %d Menor: %d\n", maior, menor);
     return 0;
 }
 
-void bubbleSort(int *numeros, int tamanho){
-    int trocado, temp;
-    do
+void maiorMenor(int *numeros, int tamanho, int *maior, int *menor){
+    for (int i = 0; i < tamanho; i++)
     {
-        trocado = 0;
-        for (int i = 0; i < tamanho -1; i++)
-        {
-            if (numeros[i] > numeros[i +1])
-            {
-                temp = numeros[i];
-                numeros[i] = numeros[i + 1];
-                numeros[i + 1] = temp;
-                trocado = 1;
-            }
-            
+        if(numeros[i] > *maior){
+            *maior = numeros[i];
         }
+        if(numeros[i] < *menor){
+            *menor = numeros[i];
+        }
+    }
         
-    } while (trocado == 1);
-    
 }
