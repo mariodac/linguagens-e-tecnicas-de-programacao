@@ -20,9 +20,8 @@ int horario(int *horaInicial, int *minutoInicial, int *horaFinal, int *minutoFin
     fim = (*horaFinal * 60) + *minutoFinal;
     if(inicio > fim)
         fim += 24 * 60;
-    duracao = fim - inicio;
-    *horaDuracao = duracao/60;
-    *minutoDuracao = duracao%60;
+    *horaDuracao = (fim - inicio)/60;
+    *minutoDuracao = (fim - inicio)%60;
     
     
 }
