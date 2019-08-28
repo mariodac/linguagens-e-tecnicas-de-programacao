@@ -1,0 +1,5 @@
+Desenvolva uma função recursiva que some todos os elementos da diagonal principal de uma matriz quadrada
+
+1) De posse de uma matriz quadrada imprima recursivamente todos os elementos de uma linha especifica quee o usuario determinar.
+2)De posse de uma matriz quadrada imprima todos os elementos de uma coluna especifica que o usuario determinar
+3)De posse de uma matriz quadrada somar de forma recursiva todos os elementos da diagonal secundaria

@@ -21,7 +21,7 @@ void numerosNaturaisCresc(int n, int i){
     }
     else{
         printf("%d ", i);
-        return numerosNaturaisCresc(n,o (i+1));
+        return numerosNaturaisCresc(n, (i+1));
     }
 }
 
