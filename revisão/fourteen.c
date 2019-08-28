@@ -1,6 +1,6 @@
 #include <stdio.h>
 enum{false, true};
-int horario(int*, int*, int*, int*, int*, int*);
+void horario(int*, int*, int*, int*, int*, int*);
 
 int main(int argc, char const *argv[])
 {
@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-int horario(int *horaInicial, int *minutoInicial, int *horaFinal, int *minutoFinal, int *horaDuracao, int *minutoDuracao){
+void horario(int *horaInicial, int *minutoInicial, int *horaFinal, int *minutoFinal, int *horaDuracao, int *minutoDuracao){
     int inicio, fim, duracao;
     inicio = (*horaInicial * 60) + *minutoInicial;
     fim = (*horaFinal * 60) + *minutoFinal;
