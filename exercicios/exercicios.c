@@ -75,8 +75,10 @@ int main(){
         case 8:
             system("clear");
             t = 10;
-            for(i = t; i > 0; i--){
-                vetorF[i] = (float)i;
+            int cont = 10;
+            for(i = 0; i < t; i++){
+                vetorF[i] = (float)cont;
+                cont--;
             }
             for(i = 0; i < t; i++) printf("%.2f ", vetorF[i]);
             printf("\n");
