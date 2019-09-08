@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "math.h"
+#include "string.h"
 
 int menu();
 int N_elevado_Y(int, int);
@@ -9,8 +10,11 @@ int F(int);
 int potencia(int, int);
 int somaCrescInt(int*, int);
 float somaCrescFloat(float*, int);
-float menorElemento(float*, int);
+float menorElemento(float*, int, double);
 float maiorElemento(float*, int);
+int letraRepetida(char*, char, int);
+void imprimeReverso(char*);
+void hanoi(int, int, int, int, int);
 
 int main(){
 
@@ -63,27 +67,50 @@ int main(){
             break;
         case 7:
             system("clear");
-            int tam = 10, j = 0;
-            for(; j < tam; j++){
-                vetorF[j] = (float)j;
+            int tam = 10, j = 0, cont = 10;
+            for(i = 0; i < tam; i++){
+                vetorF[i] = (float)cont;
+                cont--;
             }
             for(j = 0; j < tam; j++) printf("%.2f ", vetorF[j]);
             printf("\n");
-            i = 0;
-            printf("Menor elemento: %.2f\n", menorElemento(vetorF, i));
+            i = (int)INFINITY;
+            printf("Menor elemento: %.2f\n%.2f", menorElemento(vetorF, tam - 1, i), vetorF[0]);
             break;
         case 8:
             system("clear");
             t = 10;
-            int cont = 10;
+            cont = 10;
             for(i = 0; i < t; i++){
                 vetorF[i] = (float)cont;
                 cont--;
             }
             for(i = 0; i < t; i++) printf("%.2f ", vetorF[i]);
             printf("\n");
-            i = 0;
-            printf("Maior elemento: %.2f\n", maiorElemento(vetorF, i));
+            printf("Maior elemento: %.2f\n", maiorElemento(vetorF, t));
+            break;
+        case 9:
+            system("clear");
+            char *vet = "abbcccdddd", letra;
+            getchar();
+            printf("Digite uma letra: ");
+            scanf("%c", &letra);
+            int repetida = 0;
+            printf("A letra %c se repete %d vezes\n", letra, letraRepetida(vet, letra, 0));
+            break;
+        case 10:
+            system("clear");
+            char palavra[50];
+            int c = 0;
+            getchar();
+            // scanf("%s", vet);
+            gets(palavra);
+            imprimeReverso(palavra);
+            printf("\n");
+            break;
+        case 11:
+            system("clear");
+            hanoi(5,4,3,2,1);
             break;
         default:
             system("clear");
@@ -106,6 +133,9 @@ int menu(){
     printf("6 - Soma dos elementos do vetor\n");
     printf("7 - Menor elemento do vetor\n");
     printf("8 - Maior elemento do vetor\n");
+    printf("9 - Quantidade de vezes que uma letra se repete\n");
+    printf("10 - String reversa\n");
+    printf("11 - Torre de Hanoi\n");
     printf("0 - para sair\n");
     printf("Digite a opção desejada: ");
     scanf("%d", &op);
@@ -167,31 +197,57 @@ float somaCrescFloat(float *vetor, int n){
     
 }
 
-float menorElemento(float *vetor, int n){
-    float menor = vetor[n];
-    if(n == 8)
-        return vetor[n+1];
-    else
-    {
-        if(vetor[n + 1] < menor){
-            menor = vetor[n];
-            return menorElemento(vetor, n+1);
-        }
-        else return menor;
-    }
-    
+float menorElemento(float *vetor, int n, double m){
+    if(n < 0)
+        return m;
+    if(vetor[n] < m)
+        m = vetor[n];
+    return menorElemento(vetor, n - 1, m);
 }
 
 float maiorElemento(float *vetor, int n){
     float maior;
-    if(n == 8)
-        return vetor[n+1];
+    if(n == 1)
+        return vetor[0];
     else
     {
-        maior = vetor[n];
-        if(vetor[n + 1] > maior)
-            return maiorElemento(vetor, n+1);
-        else return vetor[n + 1];
+        maior = maiorElemento(vetor, n -1);
+        if(maior >vetor[n-1])
+            return maior;
+        else return vetor[n - 1];
     }
     
 }
+
+int letraRepetida(char *vetor, char letra,  int tamanho){
+    if(vetor[tamanho] == '\0')
+        return 0;
+    else
+    {
+        if(vetor[tamanho] == letra){
+            return letraRepetida(vetor, letra, tamanho + 1)+1;
+        }
+        else
+            letraRepetida(vetor, letra, tamanho + 1);
+    }
+    
+}
+
+void imprimeReverso(char *vet){
+    if(*vet){
+        imprimeReverso(vet+1);
+        printf("%c", *vet);
+    }
+}
+
+void hanoi(int QTD_DISCOS, int origem, int destino, int temp, int rank)
+{
+
+  if (QTD_DISCOS > 0)
+  {
+    hanoi(QTD_DISCOS-1, origem, temp, destino, rank);
+    printf("%4d ) %c --> %c\n", ++rank, '@' + origem, '@' + destino);
+    hanoi(QTD_DISCOS-1, temp, destino, origem, rank);
+  }
+}
+
