@@ -1,0 +1,8 @@
+1- desenvolva uma aplicação utilizando como motivação a linguagem de programação c, 
+que leia do usuário o tamanho de um vetor a ser preenchido, faça alocação dinâmica da memória, 
+ler do usuário seus valores inteiros e imprima-os em ordem crescente e descrescente
+2 - Desenvolva uma aplicação utilizando como motivação a linguagem de programação c, 
+que leia uma quantidade qualquer de numeros armazenando na memória, 
+pare a leitura quando o usuario entra com um numero negativo, 
+imprime o vetor lido em ordem crescente e decrescente
+3-Leia um vetor dinamicamente e informe ao usuario quanto elementos são pares e quantos são impares.
