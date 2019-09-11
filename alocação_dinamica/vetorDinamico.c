@@ -1,5 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "locale.h"
+#include "windows.h"
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #define limpar_input() fflush(stdin)
@@ -18,6 +20,9 @@ int vetorTamanhoIndeterminado(int*);
 void vetorParesImpares(int*);
 
 int main(){
+    UINT CPAGE_UTF8 = 65001;
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+    SetConsoleOutputCP(CPAGE_UTF8);
     int op = -1;
     while (op != 0)
     {
@@ -64,6 +69,7 @@ int main(){
             break;
         }
     }
+    SetConsoleOutputCP(CPAGE_DEFAULT);
     return 0;
 }
 
