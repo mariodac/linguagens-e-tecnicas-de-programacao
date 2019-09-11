@@ -1,6 +1,14 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#define limpar_input() fflush(stdin)
+#define limpar_tela() system("cls")
+#else
+#define limpar_input() __fpurge(stdin)
+#define limpar_tela() system("clear")
+#endif
+
 int preencheVetor(int*, int);
 void ordemCrescente(int*, int);
 void imprimir(int*, int);
@@ -19,6 +27,7 @@ int main(){
         case 0:
             break;
         case 1:{
+            limpar_tela();
             int *v, n;
             printf("Imprima o tamanho do vetor: ");
             scanf("%d", &n);
@@ -28,20 +37,27 @@ int main(){
             qsort(v, n, sizeof(int), comparacao);
             imprimir(v, n);
             free(v);
+            break;
         }
 
         case 2:{
+            limpar_tela();
             int *v, t;
             v = malloc(sizeof(int));
             t = vetorTamanhoIndeterminado(v);
             qsort(v, t, sizeof(int), comparacao);
             imprimir(v, t);
+            free(v);
+            break;
         }
 
         case 3:{
+            limpar_tela();
             int *v, t;
             v = malloc(sizeof(int));
             vetorParesImpares(v);
+            free(v);
+            break;
         }
 
         default:
@@ -50,6 +66,7 @@ int main(){
     }
     return 0;
 }
+
 
 void vetorParesImpares(int *v){
     int numero, i = 0, j = 1, par = 0, impar = 0;
@@ -123,6 +140,8 @@ void imprimir(int *v, int n){
 int preencheVetor(int *v, int n){
     for (int i = 0; i < n; i++) scanf("%d", &v[i]);
 }
+
+
 
 
 
