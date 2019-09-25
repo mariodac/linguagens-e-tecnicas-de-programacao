@@ -3,6 +3,14 @@
 #include "math.h"
 #include "string.h"
 
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#define limpar_input() fflush(stdin)
+#define limpar_tela() system("cls")
+#else
+#define limpar_input() __fpurge(stdin)
+#define limpar_tela() system("clear")
+#endif
+
 int menu();
 int N_elevado_Y(int, int);
 int mdcEuclide(int, int);
@@ -24,39 +32,39 @@ int main(){
         switch (op)
         {
         case 0:
-            system("clear");
+            limpar_tela();
             break;
         case 1:
-            system("clear");
+            limpar_tela();
             printf("Em programação, a recursividade é um mecanismo útil e poderoso que permite a uma função chamar a si mesma direta ou indiretamente.\n  A idéia básica de um algoritmo recursivo consiste em diminuir sucessivamente o problema em um  problema  menor  ou  mais  simples,  até  que  o  tamanho  ou  a  simplicidade  do  problema  reduzido permita  resolvê-lo  de  forma  direta,  sem  recorrer  a  si  mesmo.  Quando  isso  ocorre,  diz-se  que  o algoritmo atingiu uma condição de parada, a qual deve estar presente em pelo menos um local dentro algoritmo. Sem esta condição o algoritmo não pára de chamar a si mesmo, até estourar a capacidade da pilha, o que geralmente causa efeitos colaterais e até mesmo o término indesejável do programa.\n");
             break;
         case 2:
-            system("clear");
+            limpar_tela();
             int n, y;
             printf("Digite o valo de N e Y: ");
             scanf("%d %d", &n, &y);
             printf("%d elevado a %d = %d\n", n, y, N_elevado_Y(n, y));
             break;
         case 3:
-            system("clear");
+            limpar_tela();
             int a, b;
             printf("Digite o valor de A e B: ");
             scanf("%d %d", &a, &b);
             printf("MDC(%d, %d) = %d\n", a, b, mdcEuclide(a, b));
             break;
         case 4: 
-            system("clear");
+            limpar_tela();
             printf("F(3) = %d\n", F(3));
             printf("F(7) = %d\n", F(7));
             break;
         case 5:
-            system("clear");
+            limpar_tela();
             printf("Digite o valor de x e y: ");
             scanf("%d %d", &a, &b);
             printf("Resultado = %d\n", potencia(a, b));
             break;
         case 6:
-            system("clear");
+            limpar_tela();
             int t = 10, i = 0;
             float *vetorF;
             for(; i < t; i++){
@@ -66,7 +74,7 @@ int main(){
             printf(" = %f\n", somaCrescFloat(vetorF, i));
             break;
         case 7:
-            system("clear");
+            limpar_tela();
             int tam = 10, j = 0, cont = 10;
             for(i = 0; i < tam; i++){
                 vetorF[i] = (float)cont;
@@ -78,7 +86,7 @@ int main(){
             printf("Menor elemento: %.2f\n%.2f", menorElemento(vetorF, tam - 1, i), vetorF[0]);
             break;
         case 8:
-            system("clear");
+            limpar_tela();
             t = 10;
             cont = 10;
             for(i = 0; i < t; i++){
@@ -90,7 +98,7 @@ int main(){
             printf("Maior elemento: %.2f\n", maiorElemento(vetorF, t));
             break;
         case 9:
-            system("clear");
+            limpar_tela();
             char *vet = "abbcccdddd", letra;
             getchar();
             printf("Digite uma letra: ");
@@ -99,7 +107,7 @@ int main(){
             printf("A letra %c se repete %d vezes\n", letra, letraRepetida(vet, letra, 0));
             break;
         case 10:
-            system("clear");
+            limpar_tela();
             char palavra[50];
             int c = 0;
             getchar();
@@ -109,11 +117,11 @@ int main(){
             printf("\n");
             break;
         case 11:
-            system("clear");
+            limpar_tela();
             hanoi(5,4,3,2,1);
             break;
         default:
-            system("clear");
+            limpar_tela();
             printf("Opção inválida!\n");
             break;
         }
