@@ -1,0 +1,4 @@
+1) escreva uma aplicação em linguagem c que solicite ao usuario a quantidade de alunos de uma determinada turma e aloque de forma dinamica um vetor de notas. depois de ler as notas, imprimir a media aritmetica.
+Observação: não deve ocorrer desperdicio de memória, após ser utilizado a memória os recursos devem ser liberados
+
+2) Desenvolva uma aplicação usando como motivação a linguagem de programação c que leia do usuario um vetor a ser preenchido, utilize exclusivamente alocação dinamica, leia do usuario os valores flutuantes do vetor e desenvolva duas funções uma que imprima em ordem crescente e outra em ordem descrecente
