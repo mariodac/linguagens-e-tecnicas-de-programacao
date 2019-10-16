@@ -1,0 +1,1 @@
+Cada aluno é representado pelas seguintes caracteristicas: nome, numero de matricula, nota1, nota2, nota3. Alocar 5 aluno e calcular a media individual por aluno e o coeficiente
