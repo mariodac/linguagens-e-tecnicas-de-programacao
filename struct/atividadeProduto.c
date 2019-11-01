@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// verificação de sistema operacional
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #define limpar_input() fflush(stdin)
 #define limpar_tela() system("cls")
@@ -8,13 +9,13 @@
 #define limpar_input() fpurge(stdin)
 #define limpar_tela() system("clear")
 #endif
-
+// criação de valores booleanos
 enum
 {
     false,
     true
 };
-
+// estrutura para produto
 typedef struct
 {
     char nome[50];
@@ -46,21 +47,31 @@ int main()
         case 1:
         {
             limpar_tela();
-            if (indice == quantidadeProdutos)
+            if (indice == quantidadeProdutos) //verificando se vetor foi totalmente preenchido
+            {
+                int op;
                 printf("Lista de produtos CHEIA\nTOTAL DE PRODUTOS ADICIONADOS: %d\n", indice);
+                printf("Deseja aumentar quantidade + 1? 1 P/SIM 0 P/NÃO\n>> ");
+                scanf("%d", &op);
+                if(op == true){
+                    quantidadeProdutos++;
+                    produtos = realloc(produtos, sizeof(Produto) * quantidadeProdutos);
+                }
+            }
+                
             else if (produtos != NULL)
             {
-                if (adicionarProduto(produtos, indice, quantidadeProdutos) == true)
+                if (adicionarProduto(produtos, indice, quantidadeProdutos) == true) //verificando se função conseguiu adicionar produto
                     indice++;
             }
             else
             {
                 int op;
                 printf("Lista desalocada!\n");
-                printf("Deseja alocar novamente? 0 P/ NÃO 1 P/ SIM\n>> ");
+                printf("Deseja alocar novamente? 0 P/ NÃO 1 P/ SIM\n>> "); 
                 scanf("%d", &op);
                 if (op == true)
-                    produtos = malloc(sizeof(Produto) * quantidadeProdutos);
+                    produtos = malloc(sizeof(Produto) * quantidadeProdutos); //alocando novamente vetor
             }
             break;
         }
@@ -114,7 +125,7 @@ int menu()
 
 int adicionarProduto(Produto *produtos, int indice, int tamanho)
 {
-    if (indice == tamanho)
+    if (indice == tamanho) //verificando se o limite do vetor foi alcançado
         return false;
     printf("\tINFORMAÇÕES SOBRE O PRODUTOS\n");
     printf("Digite o nome: ");
