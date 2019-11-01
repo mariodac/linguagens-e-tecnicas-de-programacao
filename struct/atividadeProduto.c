@@ -9,21 +9,26 @@
 #define limpar_tela() system("clear")
 #endif
 
-enum{false, true};
+enum
+{
+    false,
+    true
+};
 
-typedef struct {
+typedef struct
+{
     char nome[50];
     char marca[50];
     char data_fabricacao[50];
     int codigoBarras;
     float precoCompra;
     float precoVenda;
-}Produto;
+} Produto;
 
 int menu();
-int adicionarProduto(Produto*, int, int);
-void exibirProdutos(Produto*, int);
-void alterarProduto(Produto*, int);
+int adicionarProduto(Produto *, int, int);
+void exibirProdutos(Produto *, int);
+void alterarProduto(Produto *, int);
 
 int main()
 {
@@ -31,7 +36,7 @@ int main()
     Produto *produtos;
     printf("Digite a quantidade de produtos: ");
     scanf("%d", &quantidadeProdutos);
-    produtos = malloc(sizeof(Produto)*quantidadeProdutos);
+    produtos = malloc(sizeof(Produto) * quantidadeProdutos);
     limpar_tela();
     do
     {
@@ -39,15 +44,26 @@ int main()
         switch (op)
         {
         case 1:
+        {
             limpar_tela();
-            if(indice == quantidadeProdutos)
+            if (indice == quantidadeProdutos)
                 printf("Lista de produtos CHEIA\nTOTAL DE PRODUTOS ADICIONADOS: %d\n", indice);
-            else{
-                if(adicionarProduto(produtos, indice, quantidadeProdutos) == true)
+            else if (produtos != NULL)
+            {
+                if (adicionarProduto(produtos, indice, quantidadeProdutos) == true)
                     indice++;
-                    
+            }
+            else
+            {
+                int op;
+                printf("Lista desalocada!\n");
+                printf("Deseja alocar novamente? 0 P/ NÃO 1 P/ SIM\n>> ");
+                scanf("%d", &op);
+                if (op == true)
+                    produtos = malloc(sizeof(Produto) * quantidadeProdutos);
             }
             break;
+        }
         case 2:
         {
             limpar_tela();
@@ -65,6 +81,8 @@ int main()
             limpar_tela();
             printf("Produtos desalocados\n");
             free(produtos);
+            produtos = NULL;
+            indice = 0;
             break;
         case 0:
             limpar_tela();
@@ -80,7 +98,8 @@ int main()
     return 0;
 }
 
-int menu(){
+int menu()
+{
     int op;
     printf("\t\t*******FICHÁRIO******\n");
     printf("1 - Adicionar um produto\n");
@@ -93,8 +112,9 @@ int menu(){
     return op;
 }
 
-int adicionarProduto(Produto *produtos, int indice, int tamanho){
-    if(indice == tamanho)
+int adicionarProduto(Produto *produtos, int indice, int tamanho)
+{
+    if (indice == tamanho)
         return false;
     printf("\tINFORMAÇÕES SOBRE O PRODUTOS\n");
     printf("Digite o nome: ");
@@ -106,18 +126,19 @@ int adicionarProduto(Produto *produtos, int indice, int tamanho){
     fgets(produtos[indice].data_fabricacao, 50, stdin);
     // getchar();
     printf("Digite o código de barras: ");
-    scanf("%d",&produtos[indice].codigoBarras);
+    scanf("%d", &produtos[indice].codigoBarras);
     printf("Digite o preço de compra: ");
     scanf("%f", &produtos[indice].precoCompra);
     printf("Digite o preço de venda: ");
-    scanf("%f",&produtos[indice].precoVenda);
+    scanf("%f", &produtos[indice].precoVenda);
     return true;
 }
 
-void exibirProdutos(Produto *produtos, int indice){
+void exibirProdutos(Produto *produtos, int indice)
+{
     for (int i = 0; i < indice; i++)
     {
-        printf("\t\t\tPRODUTO #%d\n", i+1);
+        printf("\t\t\tPRODUTO #%d\n", i + 1);
         printf("NOME: %s", produtos[i].nome);
         printf("MARCA: %s", produtos[i].marca);
         printf("DATA DE FABRICAÇÃO: %s", produtos[i].data_fabricacao);
@@ -126,47 +147,53 @@ void exibirProdutos(Produto *produtos, int indice){
         printf("PREÇO DE VENDA: R$ %.2f\n", produtos[i].precoVenda);
         printf("LUCRO: R$ %.2f\n", produtos[i].precoVenda - produtos[i].precoCompra);
     }
-    
 }
 
-void alterarProduto(Produto *produtos, int indice){
+void alterarProduto(Produto *produtos, int indice)
+{
     int op;
-    printf("Deseja alterar o nome: \n0 P/ SIM 1 P/NÃO\n");
+    printf("Deseja alterar o nome: \n1 P/ SIM 0 P/NÃO\n>> ");
     scanf("%d", &op);
-    if(op == true){
+    if (op == true)
+    {
         getchar();
         printf("NOME: ");
         fgets(produtos[indice].nome, 50, stdin);
     }
-    printf("Deseja alterar a marca: \n0 P/ SIM 1 P/NÃO\n");
+    printf("Deseja alterar a marca: \n1 P/ SIM 0 P/NÃO\n>> ");
     scanf("%d", &op);
-    if(op == true){
+    if (op == true)
+    {
         getchar();
         printf("MARCA: ");
         fgets(produtos[indice].marca, 50, stdin);
     }
-    printf("Deseja alterar a data de fabricação: \n0 P/ SIM 1 P/NÃO\n");
+    printf("Deseja alterar a data de fabricação: \n1 P/ SIM 0 P/NÃO\n>> ");
     scanf("%d", &op);
-    if(op == true){
+    if (op == true)
+    {
         getchar();
         printf("DATA DE FABRICAÇÃO: ");
         fgets(produtos[indice].marca, 50, stdin);
     }
-    printf("Deseja alterar a código de barras: \n0 P/ SIM 1 P/NÃO\n");
+    printf("Deseja alterar a código de barras: \n1 P/ SIM 0 P/NÃO\n>> ");
     scanf("%d", &op);
-    if(op == true){
+    if (op == true)
+    {
         printf("CÓDIGO DE BARRAS: ");
         scanf("%d", &produtos[indice].codigoBarras);
     }
-    printf("Deseja alterar o preço de compra: \n0 P/ SIM 1 P/NÃO\n");
+    printf("Deseja alterar o preço de compra: \n1 P/ SIM 0 P/NÃO\n>> ");
     scanf("%d", &op);
-    if(op == true){
+    if (op == true)
+    {
         printf("PREÇO DE COMPRA: R$ ");
         scanf("%f", &produtos[indice].precoCompra);
     }
-    printf("Deseja alterar o preço de venda: \n0 P/ SIM 1 P/NÃO\n");
+    printf("Deseja alterar o preço de venda: \n1 P/ SIM 0 P/NÃO\n>> ");
     scanf("%d", &op);
-    if(op == true){
+    if (op == true)
+    {
         printf("PREÇO DE venda: R$ ");
         scanf("%f", &produtos[indice].precoVenda);
     }
