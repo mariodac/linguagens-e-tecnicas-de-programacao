@@ -23,11 +23,13 @@ typedef struct{
 
 int menu();
 MOTO* criarMoto();
+MOTO* criarMotos(int);
 void cadastrar(MOTO*, int);
 void preencheMoto(MOTO *);
 void imprimeMoto(MOTO*);
 int main(){
     int quantidade, op;
+    MOTO *motos = NULL;
     do{
         op = menu();
         switch(op){
@@ -39,8 +41,25 @@ int main(){
                 limpar_tela();
                 printf("Digite a quantidade a ser cadastrada -> ");
                 scanf("%d", &quantidade);
-                MOTO *moto = criarMoto(quantidade);
-                preencheMoto(moto);
+                int i = 0;
+                motos = criarMotos(quantidade);
+                while (i < quantidade){
+                    printf("\t\tMOTO #%d\n", i);
+                    preencheMoto(&motos[i]);
+                    i++;
+                }
+                break;
+            }
+            case 2:{
+                limpar_tela();
+                int i = 0;
+                if(motos != NULL)
+                    while (i < quantidade){
+                        printf("\t\tMOTO #%d\n", i);
+                        imprimeMoto(&motos[i]);
+                        i++;
+                    }
+                else printf("Nenhuma moto cadastrada!\n");
                 break;
             }
             default:
@@ -54,8 +73,8 @@ int main(){
 }
 
 int menu(){
-    printf("\t\t#LOJA DE MOTOS#\n");
-    printf("0- Para sair\n");
+    printf("\t\t::LOJA DE MOTOS::\n");
+    printf("0 - Para sair\n");
     printf("1 - Para cadastrar uma moto\n");
     printf("2 - Para exibir veiculos cadastrados\n");
     printf("Digite a opção desejada -> ");
@@ -64,44 +83,44 @@ int menu(){
     return op;
 }
 
-MOTO* criarMoto(int quantidade){
+MOTO* criarMoto(){
+    MOTO *moto;
+    moto = malloc(sizeof(MOTO));
+    return moto;
+}
+
+MOTO* criarMotos(int quantidade){
     MOTO *moto;
     moto = malloc(sizeof(MOTO)*quantidade);
     return moto;
 }
 
-void cadastrar(MOTO* motos, int quantidade){
-    for(int i = 0; i < quantidade; i++){
-        
-    }
-}
-
 void preencheMoto(MOTO *moto){
-    printf("Digite a cor -> ");
     limpar_input();
-    fgets( moto->cor, 20, stdin);
-    printf("Digite a ano de fabricação -> ");
-    scanf("%d", &moto->ano_fabricacao);
-    // limpar_input();
+    printf("Digite a cor -> ");
+    fgets( moto->cor, 10, stdin);
     printf("Digite a marca -> ");
     fgets(moto->marca, 45, stdin);
     printf("Digite o modelo -> ");
     fgets(moto->modelo, 45, stdin);
     printf("Digite a placa -> ");
     fgets(moto->placa, 10, stdin);
-    printf("Digite o preço de compra");
+    printf("Digite a ano de fabricação -> ");
+    scanf("%d", &moto->ano_fabricacao);
+    // limpar_input();
+    printf("Digite o preço de compra -> ");
     scanf("%f", &moto->preco_compra);
-    printf("Digite o preço de venda");
+    printf("Digite o preço de venda -> ");
     scanf("%f", &moto->preco_venda);
 }
 
 void imprimeMoto(MOTO *moto){
-    printf("COR: %s\n", moto->cor);
-    printf("MARCA: %s\n", moto->marca);
-    printf("MODELO: %s\n", moto->modelo);
-    printf("PLACA: %s\n", moto->placa);
+    printf("COR: %s", moto->cor);
+    printf("MARCA: %s", moto->marca);
+    printf("MODELO: %s", moto->modelo);
+    printf("PLACA: %s", moto->placa);
     printf("ANO DE FABRICAÇÃO: %d\n", moto->ano_fabricacao);
-    printf("PREÇO DE VENDA: %f\n", moto->preco_compra);
-    printf("PREÇO DE COMPRA : %f\n", moto->preco_venda);
-    printf("LUCRO : %.2f\n", (moto->preco_compra - moto->preco_venda));
+    printf("PREÇO DE VENDA: %.2f\n", moto->preco_compra);
+    printf("PREÇO DE COMPRA : %.2f\n", moto->preco_venda);
+    printf("LUCRO : %.2f\n", (moto->preco_venda - moto->preco_compra));
 }
